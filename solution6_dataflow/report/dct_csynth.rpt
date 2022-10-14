@@ -1,0 +1,156 @@
+
+
+================================================================
+== Vitis HLS Report for 'dct'
+================================================================
+* Date:           Fri Oct 14 17:52:35 2022
+
+* Version:        2022.1 (Build 3526262 on Mon Apr 18 15:47:01 MDT 2022)
+* Project:        dct_prj
+* Solution:       solution6 (Vivado IP Flow Target)
+* Product family: virtexuplus
+* Target device:  xcvu9p-flgb2104-1-e
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  4.159 ns|     2.70 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+----------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline |
+    |   min   |   max   |    min   |    max   | min | max |   Type   |
+    +---------+---------+----------+----------+-----+-----+----------+
+    |      606|      606|  6.060 us|  6.060 us|  473|  473|  dataflow|
+    +---------+---------+----------+----------+-----+-----+----------+
+
+    + Detail: 
+        * Instance: 
+        +---------------+------------+---------+---------+----------+----------+-----+-----+---------+
+        |               |            |  Latency (cycles) |  Latency (absolute) |  Interval | Pipeline|
+        |    Instance   |   Module   |   min   |   max   |    min   |    max   | min | max |   Type  |
+        +---------------+------------+---------+---------+----------+----------+-----+-----+---------+
+        |read_data_U0   |read_data   |       66|       66|  0.660 us|  0.660 us|   66|   66|       no|
+        |dct_2d_U0      |dct_2d      |      472|      472|  4.720 us|  4.720 us|  472|  472|       no|
+        |write_data_U0  |write_data  |       66|       66|  0.660 us|  0.660 us|   66|   66|       no|
+        +---------------+------------+---------+---------+----------+----------+-----+-----+---------+
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++---------------------+---------+------+---------+---------+-----+
+|         Name        | BRAM_18K|  DSP |    FF   |   LUT   | URAM|
++---------------------+---------+------+---------+---------+-----+
+|DSP                  |        -|     -|        -|        -|    -|
+|Expression           |        -|     -|        0|        2|    -|
+|FIFO                 |        -|     -|        -|        -|    -|
+|Instance             |        9|    16|      870|     2023|    0|
+|Memory               |        3|     -|        0|        0|    0|
+|Multiplexer          |        -|     -|        -|        -|    -|
+|Register             |        -|     -|        -|        -|    -|
++---------------------+---------+------+---------+---------+-----+
+|Total                |       12|    16|      870|     2025|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available SLR        |     1440|  2280|   788160|   394080|  320|
++---------------------+---------+------+---------+---------+-----+
+|Utilization SLR (%)  |       ~0|    ~0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+|Available            |     4320|  6840|  2364480|  1182240|  960|
++---------------------+---------+------+---------+---------+-----+
+|Utilization (%)      |       ~0|    ~0|       ~0|       ~0|    0|
++---------------------+---------+------+---------+---------+-----+
+
++ Detail: 
+    * Instance: 
+    +---------------+------------+---------+----+-----+------+-----+
+    |    Instance   |   Module   | BRAM_18K| DSP|  FF |  LUT | URAM|
+    +---------------+------------+---------+----+-----+------+-----+
+    |dct_2d_U0      |dct_2d      |        9|  16|  822|  1709|    0|
+    |read_data_U0   |read_data   |        0|   0|   24|   157|    0|
+    |write_data_U0  |write_data  |        0|   0|   24|   157|    0|
+    +---------------+------------+---------+----+-----+------+-----+
+    |Total          |            |        9|  16|  870|  2023|    0|
+    +---------------+------------+---------+----+-----+------+-----+
+
+    * DSP: 
+    N/A
+
+    * Memory: 
+    +--------------+--------------------------+---------+---+----+-----+------+-----+------+-------------+
+    |    Memory    |          Module          | BRAM_18K| FF| LUT| URAM| Words| Bits| Banks| W*Bits*Banks|
+    +--------------+--------------------------+---------+---+----+-----+------+-----+------+-------------+
+    |buf_2d_in_U   |buf_2d_in_RAM_AUTO_1R1W   |        2|  0|   0|    0|    64|   16|     1|         1024|
+    |buf_2d_out_U  |buf_2d_out_RAM_AUTO_1R1W  |        1|  0|   0|    0|    64|   16|     1|         1024|
+    +--------------+--------------------------+---------+---+----+-----+------+-----+------+-------------+
+    |Total         |                          |        3|  0|   0|    0|   128|   32|     2|         2048|
+    +--------------+--------------------------+---------+---+----+-----+------+-----+------+-------------+
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +--------------+----------+----+---+----+------------+------------+
+    | Variable Name| Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +--------------+----------+----+---+----+------------+------------+
+    |ap_idle       |       and|   0|  0|   2|           1|           1|
+    +--------------+----------+----+---+----+------------+------------+
+    |Total         |          |   0|  0|   2|           1|           1|
+    +--------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    N/A
+
+    * Register: 
+    N/A
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-------------------+-----+-----+------------+--------------+--------------+
+|     RTL Ports     | Dir | Bits|  Protocol  | Source Object|    C Type    |
++-------------------+-----+-----+------------+--------------+--------------+
+|ap_clk             |   in|    1|  ap_ctrl_hs|           dct|  return value|
+|ap_rst             |   in|    1|  ap_ctrl_hs|           dct|  return value|
+|ap_start           |   in|    1|  ap_ctrl_hs|           dct|  return value|
+|ap_done            |  out|    1|  ap_ctrl_hs|           dct|  return value|
+|ap_ready           |  out|    1|  ap_ctrl_hs|           dct|  return value|
+|ap_idle            |  out|    1|  ap_ctrl_hs|           dct|  return value|
+|input_r_address0   |  out|    6|   ap_memory|       input_r|         array|
+|input_r_ce0        |  out|    1|   ap_memory|       input_r|         array|
+|input_r_d0         |  out|   16|   ap_memory|       input_r|         array|
+|input_r_q0         |   in|   16|   ap_memory|       input_r|         array|
+|input_r_we0        |  out|    1|   ap_memory|       input_r|         array|
+|input_r_address1   |  out|    6|   ap_memory|       input_r|         array|
+|input_r_ce1        |  out|    1|   ap_memory|       input_r|         array|
+|input_r_d1         |  out|   16|   ap_memory|       input_r|         array|
+|input_r_q1         |   in|   16|   ap_memory|       input_r|         array|
+|input_r_we1        |  out|    1|   ap_memory|       input_r|         array|
+|output_r_address0  |  out|    6|   ap_memory|      output_r|         array|
+|output_r_ce0       |  out|    1|   ap_memory|      output_r|         array|
+|output_r_d0        |  out|   16|   ap_memory|      output_r|         array|
+|output_r_q0        |   in|   16|   ap_memory|      output_r|         array|
+|output_r_we0       |  out|    1|   ap_memory|      output_r|         array|
+|output_r_address1  |  out|    6|   ap_memory|      output_r|         array|
+|output_r_ce1       |  out|    1|   ap_memory|      output_r|         array|
+|output_r_d1        |  out|   16|   ap_memory|      output_r|         array|
+|output_r_q1        |   in|   16|   ap_memory|      output_r|         array|
+|output_r_we1       |  out|    1|   ap_memory|      output_r|         array|
++-------------------+-----+-----+------------+--------------+--------------+
+
